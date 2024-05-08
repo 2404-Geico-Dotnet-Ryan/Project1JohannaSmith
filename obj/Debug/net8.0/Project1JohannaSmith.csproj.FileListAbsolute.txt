@@ -1,0 +1,15 @@
+C:\Users\U88AFG\Revature\Project1JohannaSmith\bin\Debug\net8.0\Project1JohannaSmith.exe
+C:\Users\U88AFG\Revature\Project1JohannaSmith\bin\Debug\net8.0\Project1JohannaSmith.deps.json
+C:\Users\U88AFG\Revature\Project1JohannaSmith\bin\Debug\net8.0\Project1JohannaSmith.runtimeconfig.json
+C:\Users\U88AFG\Revature\Project1JohannaSmith\bin\Debug\net8.0\Project1JohannaSmith.dll
+C:\Users\U88AFG\Revature\Project1JohannaSmith\bin\Debug\net8.0\Project1JohannaSmith.pdb
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\Project1JohannaSmith.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\Project1JohannaSmith.AssemblyInfoInputs.cache
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\Project1JohannaSmith.AssemblyInfo.cs
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\Project1JohannaSmith.csproj.CoreCompileInputs.cache
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\Project1JohannaSmith.sourcelink.json
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\Project1JohannaSmith.dll
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\refint\Project1JohannaSmith.dll
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\Project1JohannaSmith.pdb
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\Project1JohannaSmith.genruntimeconfig.cache
+C:\Users\U88AFG\Revature\Project1JohannaSmith\obj\Debug\net8.0\ref\Project1JohannaSmith.dll
