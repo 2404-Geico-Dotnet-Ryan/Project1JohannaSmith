@@ -12,6 +12,18 @@ class TripStorage
     Trip trip5 = new("South America", 5000, "Air", "Warm", true, "Zip-Lining forest canopies, Sandboarding Dunes, White-water Rafting");
     Trip trip6 = new("Asia", 7000, "Air", "Warm", true, "Attending Traditional Festivals, Learning Ancient Arts and Crafts, Visiting Historic Temples, Exploring Local Markets");
     Trip trip7 = new("Africa", 1000, "Air", "Warm", true, "Safari Drives in National Parks, Guided Walks to observe wildlife up close, Boat Rides up rivers, Visit Conservation Centers");
+
+
+    // List<string> allTrips = new();
+    //     allTrips.Add("Tropical Beaches in the Carribbean");
+    //     allTrips.Add("Kid-centered Theme Parks in Florida");
+    //     allTrips.Add("All-inclusive Cruises to Alaska");
+    //     allTrips.Add("Historic Destinations in Europe");
+    //     allTrips.Add("Adventurous Tours in South America");
+    //     allTrips.Add("Cultural Immersions in Asia");
+    //     allTrips.Add("Animal Encounters in Africa");
+    //     System.Console.WriteLine("We offer trips to: ");
+    //     System.Console.WriteLine(string.Join(", ", allTrips));
     }
 }
 

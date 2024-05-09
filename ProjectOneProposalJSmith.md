@@ -6,8 +6,8 @@ I intend to create a travel agency application.
 - At any point they can save and exit / log back in and continue (maybe?)
 - Users will be prompted to make choices that will ultimately lead to the details of their trip.
     - Such as:
-        - Dates
-        - Budget
+        - Dates --updating to season
+        - Budget --I'm wondering if I should remove this, or make them a range, or maybe just make them all pretty low. because I would have to add like 2 trips for every filtering question. OR- should I filter after every answer, and just not present any more questions once we are down to only 1 trip? This might be the way.
         - Number of travelers
         - Location of Departure
         - Type of Travel

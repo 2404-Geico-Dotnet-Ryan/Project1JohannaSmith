@@ -1,5 +1,5 @@
 "When are you planning to travel? We have trips available for spring, summer, fall, and winter. Please enter a season, or you could say Any."
-"That's great! We will be sure to find something that fits your needs! Now- what budget are you working with? We have trips availabe from 3000 - 10000. Please enter a budget amount, or you could say Any."
+"That's great! We will be sure to find something that fits your needs! Now- what budget are you working with? We have trips availabe from 3000 - 10000. Please enter a maximum budget amount."
 "Ok! We can definitely work with that. How many people will be traveling with you?"
 "Sounds fun- what is your departure location?"
 "Halfway done! Do you have a preference on the type of travel? We offer travel by Air, Train, or Cruise. Please enter a type of travel, or you could say Any."
