@@ -7,6 +7,8 @@ class AddOnActivities
 
     public AddOnActivities()
     {
+        ActivityName = "";
+        ActivityLocation = "";
 
     }
 

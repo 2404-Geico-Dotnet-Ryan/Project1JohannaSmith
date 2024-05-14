@@ -2,12 +2,12 @@ class TripStorage
 {
 
     public Dictionary<string, Trip> trips = [];
-    public Dictionary<int, Users> userInfo = [];
+    public Dictionary<int, User> userInfo = [];
     public int userId = 1;
 
     public int UserInfo()
     {
-        Users user1 = new();
+        User user1 = new();
         return userId++;
     }
 
