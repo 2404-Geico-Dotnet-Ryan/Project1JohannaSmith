@@ -6,6 +6,7 @@ class User
     public string Password { get; set; }
     public string FirstName { get; set; }   
     public string LastName { get; set; }
+    public double MaxBudget { get; set; }
     // public string Role { get; set; }
     
     public Dictionary<int, User> userInfo = [];

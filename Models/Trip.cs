@@ -1,10 +1,14 @@
 namespace ProjectOne;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
 
 class Trip 
 {
     public int Id { get; set; }
     public string? Location { get; set; }
-    public double Cost { get; set; }
+    public double MaxBudget { get; set; }
     public string? TravelType { get; set; }
     public string? Climate { get; set; }
     public bool NeedsPassport { get; set; }
@@ -15,11 +19,11 @@ class Trip
 
     }
 
-    public Trip(int id, string location, double cost, string travelType, string climate, bool needsPassport, string includedActivities)
+    public Trip(int id, string location, double maxBudget, string travelType, string climate, bool needsPassport, string includedActivities)
     {
         Id = id;
         Location = location;
-        Cost = cost;        
+        MaxBudget = maxBudget;        
         TravelType = travelType;
         Climate = climate;
         NeedsPassport = needsPassport;
@@ -29,7 +33,7 @@ class Trip
 
     public override string ToString()
     {
-        return $"{{Id: {Id},Location: {Location},Cost: {Cost}, TravelType: {TravelType}, Climate: {Climate}, NeedsPassport: {NeedsPassport}}}";
+        return $"{{Id: {Id},Location: {Location},MaxBudget: {MaxBudget}, TravelType: {TravelType}, Climate: {Climate}, NeedsPassport: {NeedsPassport}}}";
     }
 
 }

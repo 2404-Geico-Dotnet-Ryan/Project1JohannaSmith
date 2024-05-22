@@ -7,17 +7,21 @@ namespace ProjectOne;
 
 class Program
 {
-    static SavedTripService savedts = new();
+    static SavedTripService savedts;
     static UserService us; 
+    static TripService tripService;
     static User? currentUser = null;
+    static SavedTripRepo savedTrRepo;
     static void Main(string[] args)
     {
         string path = @"C:\Users\U88AFG\Revature\Project-app-db.txt";
         string connectionString = File.ReadAllText(path);
-        System.Console.WriteLine(connectionString); // definitely remove later
         UserRepo ur = new(connectionString);
         us = new(ur);
-
+        TripRepo tripRepo = new TripRepo(connectionString);
+        tripService = new TripService(tripRepo);
+        savedTrRepo = new SavedTripRepo(connectionString);
+        savedts = new SavedTripService(savedTrRepo);
         //Testing 
         //User newUser = new(0, "test3", "pass", "please", "work");
         // ur.AddUser(newUser);
@@ -33,7 +37,6 @@ class Program
         System.Console.WriteLine("Thank you for choosing Project One Travel Company!");
         System.Console.WriteLine("We look forward to working with you to plan your dream getaway!");
         UserMenu();
-        // UserLogin();
         // FilteringQuestions();
 
 
@@ -71,7 +74,7 @@ class Program
 
             currentUser = us.LoginUser(username, password);
             if (currentUser == null)
-            System.Console.WriteLine("Hmm, something went wrong- let's try again.");
+            System.Console.WriteLine("Hmm, something went wrong- let's try again, or press 0 to quit."); //need to add functionality to quit
         }
         FilteringQuestions();
     }
@@ -144,13 +147,20 @@ class Program
     {
         System.Console.WriteLine("====== Let's get started with a few questions! ======");
         {
-        Season();
-        Budget();
-        NumOfTravelers();
-        DepLocation();
-        TravelType();
-        PassportStatus();
-        ClimatePref();
+        User user = us.LoginUser(currentUser.Username, currentUser.Password);
+        // double maxBudget = currentUser.MaxBudget;
+        // Season();
+        var maxBudget = Budget(currentUser);
+        // NumOfTravelers();
+        // DepLocation();
+        // TravelType();
+        // PassportStatus();
+        // ClimatePref();
+        var filteredTrips = tripService.FilterTrips(maxBudget);
+        foreach (var trip in filteredTrips)
+        {
+            savedts.SaveUserTrip(currentUser.userId, trip.Id); 
+        }
         }
         // ChildStatus();
         // CreateTrip();
@@ -333,47 +343,48 @@ class Program
         return travelers;
     }
 
-    public static double Budget()
+    public static double Budget(User currentUser)
     {
         System.Console.WriteLine("That's great! We will be sure to find something that fits your needs!");
         System.Console.WriteLine("Now- what budget are you working with?");
-        double budget = 1;
+        double maxBudget = 1;
         bool keepGoing = true;
         while (keepGoing == true)
         {
 
-            while (budget == 1)
+            while (maxBudget == 1)
             {
 
                 try
                 {
                     System.Console.WriteLine("We have trips availabe starting at 3000. Please enter a maximum budget amount, or press '0' to quit:");
-                    budget = double.Parse(Console.ReadLine() ?? "0");
-                    if (budget == 0)
+                    maxBudget = double.Parse(Console.ReadLine() ?? "0");
+                    if (maxBudget == 0)
                     {
                         System.Console.WriteLine("Thank you, have a nice day!");
                         keepGoing = false;
                         break;
                     }
-                    if (budget < 3000)
+                    if (maxBudget < 3000)
                     {
                         // System.Console.WriteLine("At this time, we don't offer trips for less than 3000. Please enter an amount greater than 3000 to continue: ");
-                        budget = 1;
+                        maxBudget = 1;
                     }
                 }
                 catch (FormatException ex)
                 {
                     System.Console.WriteLine("Something went wrong.");
-                    budget = 1;
+                    maxBudget = 1;
                 }
             }
-            if (budget == 3000 || budget > 3000)
+            if (maxBudget == 3000 || maxBudget > 3000)
             {
                 System.Console.WriteLine("We can work with that!");
                 keepGoing = false;
             }
         }
-        return budget;
+
+        return maxBudget;
         //Add filtering
     }
 

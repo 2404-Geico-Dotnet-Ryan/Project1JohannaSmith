@@ -5,7 +5,7 @@ class SavedTrip : AddOnActivities
     public int UId { get; set; }  
     public string? Season { get; set; }
     public string? Location { get; set; }
-    public double Cost { get; set; }
+    public double MaxBudget { get; set; }
     public int NumOfTravelers { get; set; }
     public string? TravelType { get; set; }
     public string? ClimatePref { get; set; }
@@ -17,12 +17,12 @@ class SavedTrip : AddOnActivities
 
     }
 
-    public SavedTrip(int tripId, int uId, string location, double cost, int numOfTravelers, string travelType, string climatePref, bool passportStat, string addOnActivities)
+    public SavedTrip(int tripId, int uId, string location, double maxBudget, int numOfTravelers, string travelType, string climatePref, bool passportStat, string addOnActivities)
     {
         TripId = tripId;
         UId = uId;
         Location = location;
-        Cost = cost;
+        MaxBudget = maxBudget;
         NumOfTravelers = numOfTravelers;
         TravelType = travelType;
         ClimatePref = climatePref;
@@ -32,7 +32,7 @@ class SavedTrip : AddOnActivities
 
     public override string ToString()
     {
-        return $"{{ Trip Option: {TripId},Location: {Location},Cost: {Cost}, TravelType: {TravelType}, Climate: {ClimatePref}, NeedsPassport: {PassportStatus}, AddOnActivities: {AddOnActivities}}}";
+        return $"{{ Trip Option: {TripId},Location: {Location},MaxBudget: {MaxBudget}, TravelType: {TravelType}, Climate: {ClimatePref}, NeedsPassport: {PassportStatus}, AddOnActivities: {AddOnActivities}}}";
     }
 
 }

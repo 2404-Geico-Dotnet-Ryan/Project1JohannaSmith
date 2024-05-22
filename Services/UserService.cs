@@ -34,4 +34,6 @@ class UserService
         System.Console.WriteLine("Oops- invalid username/password combo, please try again:");
         return null; 
     }
+
+    // public bool UserAuthenticated
 }
