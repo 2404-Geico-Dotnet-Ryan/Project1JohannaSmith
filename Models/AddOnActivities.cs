@@ -1,3 +1,4 @@
+namespace ProjectOne;
 class AddOnActivities
 {
     public string ActivityName { get; set; }

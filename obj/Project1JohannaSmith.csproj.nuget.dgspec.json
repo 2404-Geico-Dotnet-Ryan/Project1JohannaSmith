@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj": {}
+    "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj": {}
   },
   "projects": {
-    "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj": {
+    "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj",
+        "projectUniqueName": "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj",
         "projectName": "Project1JohannaSmith",
-        "projectPath": "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj",
+        "projectPath": "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj",
         "packagesPath": "C:\\Users\\U88AFG\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\obj\\",
+        "outputPath": "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\U88AFG\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Net.Code.ADONet": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -60,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

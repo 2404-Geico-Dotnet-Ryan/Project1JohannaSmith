@@ -1,3 +1,4 @@
+namespace ProjectOne;
 class User
 {
     public int UserId { get; set; } 
@@ -7,6 +8,14 @@ class User
     public string LastName { get; set; }
     // public string Role { get; set; }
     
+    public Dictionary<int, User> userInfo = [];
+    public int userId = 1;
+
+    public int UserInfo()
+    {
+        User user1 = new();
+        return userId++;
+    }
 
 
     public User()

@@ -1,30 +1,35 @@
-class Trip : AddOnActivities
+namespace ProjectOne;
+
+class Trip 
 {
+    public int Id { get; set; }
     public string? Location { get; set; }
     public double Cost { get; set; }
     public string? TravelType { get; set; }
     public string? Climate { get; set; }
     public bool NeedsPassport { get; set; }
-    public string? AddOnActivities { get; set; }
+    public string? IncludedActivities { get; set; }
 
     public Trip()
     {
 
     }
 
-    public Trip(string location, double cost, string travelType, string climate, bool needsPassport, string addOnActivities)
+    public Trip(int id, string location, double cost, string travelType, string climate, bool needsPassport, string includedActivities)
     {
+        Id = id;
         Location = location;
-        Cost = cost;
+        Cost = cost;        
         TravelType = travelType;
         Climate = climate;
         NeedsPassport = needsPassport;
-        AddOnActivities = addOnActivities;
+        IncludedActivities = includedActivities;
+    
     }
 
     public override string ToString()
     {
-        return $"{{Location: {Location},Cost: {Cost}, TravelType: {TravelType}, Climate: {Climate}, NeedsPassport: {NeedsPassport}, AddOnActivities: {AddOnActivities}}}";;
+        return $"{{Id: {Id},Location: {Location},Cost: {Cost}, TravelType: {TravelType}, Climate: {Climate}, NeedsPassport: {NeedsPassport}}}";
     }
 
 }
