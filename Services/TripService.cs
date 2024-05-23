@@ -14,8 +14,7 @@ class TripService
         if (climate.ToLower() != "any")
         {
         trips = trips.Where(t => t.Climate == climate); 
-        }
-        
+        }       
         if (needsPassport == false)
         {
             trips = trips.Where(t => t.NeedsPassport == needsPassport);
@@ -26,12 +25,4 @@ class TripService
         }
         return trips.ToList();
     }
-    
-
-
 }
-//maxBudget
-//&& t.NeedsPassport == needsPassport && t.Climate == climate
-//bool needsPassport,
-//t.NeedsPassport == needsPassport &&
-//tripRepo.GetTrips().Where(t => t.MaxBudget <= maxBudget &&  t.Climate == climate).ToList();

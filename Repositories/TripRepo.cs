@@ -3,14 +3,9 @@ using System.Data.SqlClient;
 class TripRepo
 {
     private readonly string _connectionString;
-    // SavedTripStorage savedTripStorage = new();
-    // TripStorage tripStorage = new();
+#pragma warning disable IDE0044 // Add readonly modifier
     UserRepo ur;
-
-    // public TripRepo()
-    // {
-
-    // }
+#pragma warning restore IDE0044 // Add readonly modifier
 
     public TripRepo(string connString)
     {
@@ -22,8 +17,7 @@ class TripRepo
         connection.Open();
         string sql = "SELECT * FROM Trip";
         using SqlCommand cmd = new(sql, connection);
-        using var reader = cmd.ExecuteReader();
-        
+        using var reader = cmd.ExecuteReader();        
         {
             List<Trip> trips = new List<Trip>();
             while (reader.Read())
@@ -39,8 +33,7 @@ class TripRepo
                 trips.Add(trip);
             }
             return trips;
-        }
-         
+        }        
     }
     public List<Trip> FilteredTrips(int id, string location, double maxBudget, string travelType, string climate, bool needsPassport, string includedActivities)
     {
@@ -56,7 +49,6 @@ class TripRepo
         cmd.Parameters.AddWithValue("@Climate", climate);
         cmd.Parameters.AddWithValue("@NeedsPassport", needsPassport);
         cmd.Parameters.AddWithValue("@IncludedActivities", includedActivities);
-
         using var reader = cmd.ExecuteReader();
         while (reader.Read())
         {
@@ -72,7 +64,6 @@ class TripRepo
         }
         return filteredTrips;
     }
-
     public Trip? AddTrip(Trip t)
     {
         using SqlConnection connection = new(_connectionString);
@@ -86,12 +77,9 @@ class TripRepo
         cmd.Parameters.AddWithValue("@Climate", t.Climate);
         cmd.Parameters.AddWithValue("@NeedsPassport", t.NeedsPassport);
         cmd.Parameters.AddWithValue("@IncludedActivities", t.IncludedActivities);
-
         using var reader = cmd.ExecuteReader();
-
         if (reader.Read())
         {
-
             return t;
         }
         else
@@ -105,9 +93,7 @@ class TripRepo
         connection.Open();
         string sql = "";
         using SqlCommand cmd = new(sql, connection);
-
         using var reader = cmd.ExecuteReader();
-
         if (reader.Read())
         {
             Trip trip = new();

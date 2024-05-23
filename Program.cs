@@ -52,15 +52,44 @@ class Program
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Thank you- please enter your Password: ");
             string password = Console.ReadLine() ?? "";
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             currentUser = us.LoginUser(username, password);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             if (currentUser == null)
             {
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Hmm, something went wrong- let's try again, or press 0 to quit."); //need to add functionality to quit
             }
         }
-        FilteringQuestions();
-    } 
+        if (currentUser != null)
+        {
+            System.Console.WriteLine("===========================================================================");
+            System.Console.WriteLine("Thank you! Please pick an option below: ");
+            System.Console.WriteLine("[1] View existing Saved Trips");
+            System.Console.WriteLine("[2] Plan a new Trip");
+            int input = int.Parse(Console.ReadLine() ?? "0");
+        input = ValidateCmd(input, 2);
+        switch (input)
+        {
+            case 1:
+                ViewSavedTrips(); break;
+            case 2:
+                FilteringQuestions(); break;
+        }
+        }       
+    }
+    private static void ViewSavedTrips()
+    {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+        List<SavedTrip> savedTrips = savedts.GetUserSavedTrips(currentUser);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+        System.Console.WriteLine("===========================================================================");
+        System.Console.WriteLine("Here are the trips we have saved for you:");
+        foreach (SavedTrip trip in savedTrips)
+        {
+            System.Console.WriteLine(trip);
+        }
+    }
     private static void NewUser()
     {
         System.Console.WriteLine("===========================================================================");
@@ -97,8 +126,10 @@ class Program
     {
         System.Console.WriteLine("================= Let's get started with a few questions! =================");
         {
-        User user = us.LoginUser(currentUser.Username, currentUser.Password);
-        Season();
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            User user = us.LoginUser(currentUser.Username, currentUser.Password);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+            Season();
         var maxBudget = Budget();
         NumOfTravelers();
         DepLocation();
@@ -110,8 +141,10 @@ class Program
         var filteredTrips = tripService.FilterTrips(maxBudget, climate, needsPassport, travelType);
         foreach (var trip in filteredTrips)
         {
-            savedts.SaveUserTrip(currentUser.userId, trip.Id); 
-            System.Console.WriteLine("=================================================================================================================================================================================================");
+#pragma warning disable CS8604 // Possible null reference argument.
+                savedts.SaveUserTrip(currentUser.UserId, trip.Id, trip.Location, trip.TravelType, trip.Climate, trip.NeedsPassport, trip.IncludedActivities);
+#pragma warning restore CS8604 // Possible null reference argument.
+                System.Console.WriteLine("=================================================================================================================================================================================================");
             System.Console.WriteLine(trip);
         }       
         }

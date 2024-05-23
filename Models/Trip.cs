@@ -19,7 +19,7 @@ class Trip
 
     }
 
-    public Trip(int id, string location, double maxBudget, string travelType, string climate, bool needsPassport, string includedActivities)
+    public Trip(int id,  string location, double maxBudget, string travelType, string climate, bool needsPassport, string includedActivities)
     {
         Id = id;
         Location = location;
@@ -35,5 +35,6 @@ class Trip
     {
         return $"{{Trip Id: {Id}, Destination: {Location}, All-Inclusive Cost: {MaxBudget}, Travel Type: {TravelType}, Climate: {Climate}, Requires Passport: {NeedsPassport}, Included Activities: {IncludedActivities}}}";
     }
+
 
 }

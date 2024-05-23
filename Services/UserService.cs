@@ -8,7 +8,9 @@ class UserService
     }
     public User? RegisterUser(User u)
     {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
         List<User> allUsers = ur.GetAllUser();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
         {
             foreach(User user in allUsers)
             {
@@ -23,8 +25,10 @@ class UserService
     }
     public User? LoginUser(string username, string password)
     {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
         List<User> allUsers = ur.GetAllUser();
-        foreach(User user in allUsers)
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+        foreach (User user in allUsers)
         {
             if(user.Username == username && user.Password == password)
             {
@@ -34,6 +38,4 @@ class UserService
         System.Console.WriteLine("Oops- invalid username/password combo, please try again:");
         return null; 
     }
-
-    // public bool UserAuthenticated
 }
