@@ -1,3 +1,5 @@
+using System.Reflection.Metadata.Ecma335;
+
 namespace ProjectOne;
 class TripService
 {
@@ -6,12 +8,30 @@ class TripService
     {
         this.tripRepo = tripRepo;
     }
-    public List<Trip> FilterTrips(double maxBudget)
+    public List<Trip> FilterTrips(double maxBudget, string climate, bool needsPassport, string travelType)
     {
-        return tripRepo.GetTrips().Where(t => t.MaxBudget <= maxBudget).ToList();
+        var trips = tripRepo.GetTrips().Where(t => t.MaxBudget <= maxBudget);
+        if (climate.ToLower() != "any")
+        {
+        trips = trips.Where(t => t.Climate == climate); 
+        }
+        
+        if (needsPassport == false)
+        {
+            trips = trips.Where(t => t.NeedsPassport == needsPassport);
+        }
+        if (travelType.ToLower() != "any")
+        {
+            trips = trips.Where(t => t.TravelType == travelType);
+        }
+        return trips.ToList();
     }
+    
 
 
 }
 //maxBudget
 //&& t.NeedsPassport == needsPassport && t.Climate == climate
+//bool needsPassport,
+//t.NeedsPassport == needsPassport &&
+//tripRepo.GetTrips().Where(t => t.MaxBudget <= maxBudget &&  t.Climate == climate).ToList();

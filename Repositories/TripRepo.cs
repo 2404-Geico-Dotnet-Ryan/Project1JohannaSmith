@@ -6,6 +6,7 @@ class TripRepo
     // SavedTripStorage savedTripStorage = new();
     // TripStorage tripStorage = new();
     UserRepo ur;
+
     // public TripRepo()
     // {
 
@@ -22,6 +23,7 @@ class TripRepo
         string sql = "SELECT * FROM Trip";
         using SqlCommand cmd = new(sql, connection);
         using var reader = cmd.ExecuteReader();
+        
         {
             List<Trip> trips = new List<Trip>();
             while (reader.Read())

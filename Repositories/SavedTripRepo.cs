@@ -75,7 +75,7 @@ class SavedTripRepo
             Trip trip = new();
             trip.Id = (int)reader["Id"];
             trip.Location = (string)reader["Location"];
-             trip.Climate = (string)reader["Climate"];
+            trip.Climate = (string)reader["Climate"];
             trip.TravelType = (string)reader["TravelType"];
             trip.NeedsPassport = (bool)reader["NeedsPassport"];
             trip.MaxBudget = (int)reader["MaxBudget"];

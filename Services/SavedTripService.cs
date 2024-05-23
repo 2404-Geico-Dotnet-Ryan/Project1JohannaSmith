@@ -4,6 +4,9 @@ class SavedTripService
 {
 
    SavedTripRepo savedTrRepo;
+   TripRepo tripRepo;
+   UserRepo ur;
+   UserService us;
    public SavedTripService(SavedTripRepo savedTrRepo)
    {
       this.savedTrRepo = savedTrRepo;
@@ -13,6 +16,12 @@ class SavedTripService
    {
       savedTrRepo.SaveTrip(new SavedTrip { UId = userId, TripId = tripId });
    }
+   // public Trip? TripGetter()
+   // {
+   //    foreach (var )
+   //    return null;
+      
+   // }
 
 
 
