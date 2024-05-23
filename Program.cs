@@ -52,7 +52,6 @@ class Program
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Thank you- please enter your Password: ");
             string password = Console.ReadLine() ?? "";
-
             currentUser = us.LoginUser(username, password);
             if (currentUser == null)
             {
@@ -88,6 +87,7 @@ class Program
         System.Console.WriteLine();
         if (newUser != null)
         {
+            currentUser = us.LoginUser(newUser.Username, newUser.Password);
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Your account is registered! Now we can plan your trip!");
         }
@@ -250,7 +250,7 @@ class Program
         else
         {
             System.Console.WriteLine("===========================================================================");
-            System.Console.WriteLine("Ok! We can definitely work with that.");
+            System.Console.WriteLine("Ok!");
         }
         return location;
     }
