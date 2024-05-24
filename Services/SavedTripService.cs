@@ -12,9 +12,9 @@ class SavedTripService
    {
       this.savedTrRepo = savedTrRepo;
    }
-   public void SaveUserTrip(int userId, int tripId, string location, string travelType, string climatePref, bool passportStatus, string includedActivities)
+   public void SaveUserTrip(int userId, int tripId, string location, int maxBudget, string travelType, string climatePref, bool passportStatus, string includedActivities)
    {
-      savedTrRepo.SaveTrip(new SavedTrip {UserId = userId, TripId = tripId,  Location = location, TravelType = travelType, ClimatePref = climatePref, PassportStatus = passportStatus, IncludedActivities =includedActivities });
+      savedTrRepo.SaveTrip(new SavedTrip {UserId = userId, TripId = tripId, Location = location, MaxBudget = maxBudget, TravelType = travelType, ClimatePref = climatePref, PassportStatus = passportStatus, IncludedActivities =includedActivities });
    }  
    public List<SavedTrip> GetUserSavedTrips(User user)
    {

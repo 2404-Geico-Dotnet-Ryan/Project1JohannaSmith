@@ -6,7 +6,7 @@ class SavedTrip
     public int UserId { get; set; } 
     public string? Season { get; set; }
     public string? Location { get; set; }
-    public double MaxBudget { get; set; }
+    public int MaxBudget { get; set; }
     public int NumOfTravelers { get; set; }
     public string? TravelType { get; set; }
     public string? ClimatePref { get; set; }
@@ -18,7 +18,7 @@ class SavedTrip
 
     }
 
-    public SavedTrip(int userId, int tripId, string location, double maxBudget, int numOfTravelers, string travelType, string climatePref, bool passportStat, string includedActivities)
+    public SavedTrip(int userId, int tripId, string location, int maxBudget, int numOfTravelers, string travelType, string climatePref, bool passportStat, string includedActivities)
     {
         TripId = tripId;
         UserId = userId;
@@ -33,7 +33,7 @@ class SavedTrip
 
     public override string ToString()
     {
-        return $"{{ Trip Option: {TripId},Location: {Location},MaxBudget: {MaxBudget}, TravelType: {TravelType}, Climate: {ClimatePref}, NeedsPassport: {PassportStatus}, IncludedActivities: {IncludedActivities}}}";
+        return $"{{ Trip Id: {TripId}, Location: {Location}, Cost: {MaxBudget}, TravelType: {TravelType}, Climate: {ClimatePref}, NeedsPassport: {PassportStatus}, IncludedActivities: {IncludedActivities}}}";
     }
 
 }

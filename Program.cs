@@ -6,7 +6,7 @@ namespace ProjectOne;
 class Program
 {
     static SavedTripService? savedts;
-    static UserService? us; 
+    static UserService? us;
     static TripService? tripService;
     static User? currentUser = null;
     static SavedTripRepo? savedTrRepo;
@@ -20,6 +20,7 @@ class Program
         tripService = new TripService(tripRepo);
         savedTrRepo = new SavedTripRepo(connectionString);
         savedts = new SavedTripService(savedTrRepo);
+        Console.Clear();
         System.Console.WriteLine("===========================================================================");
         System.Console.WriteLine("Thank you for choosing Project One Travel Company!");
         System.Console.WriteLine("We look forward to working with you to plan your dream getaway!");
@@ -31,15 +32,30 @@ class Program
         System.Console.WriteLine("Do you have an account? Please Pick an Option Down Below:");
         System.Console.WriteLine("[1] I am a new User.");
         System.Console.WriteLine("[2] I have already created a Username and Password.");
+        System.Console.WriteLine("[0] Exit.");
         System.Console.WriteLine("===========================================================================");
-        int input = int.Parse(Console.ReadLine() ?? "0");
-        input = ValidateCmd(input, 2);
-        switch (input)
+        while (true)
         {
-            case 1:
-                NewUser(); break;
-            case 2:
-                CurrentUser(); break;
+            try
+            {
+                int input = int.Parse(Console.ReadLine() ?? "0");
+                input = ValidateCmd(input, 2);
+                switch (input)
+                {
+                    case 1:
+                        NewUser(); break;
+                    case 2:
+                        CurrentUser(); break;
+                    case 0:
+                        System.Console.WriteLine("Goodbye!");
+                        Environment.Exit(0); break;
+                }
+            }
+            catch (FormatException ex)
+            {
+                System.Console.WriteLine("===========================================================================");
+                System.Console.WriteLine("Something went wrong- please try again:");
+            }
         }
     }
     private static void CurrentUser()
@@ -49,17 +65,16 @@ class Program
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Welcome back!! Please enter your Username: ");
             string username = Console.ReadLine() ?? "";
+            if (username == "0")
+            {
+                System.Console.WriteLine("===========================================================================");
+                System.Console.WriteLine("Goodbye!");
+                Environment.Exit(0);
+            }
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Thank you- please enter your Password: ");
             string password = Console.ReadLine() ?? "";
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             currentUser = us.LoginUser(username, password);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
-            if (currentUser == null)
-            {
-            System.Console.WriteLine("===========================================================================");
-            System.Console.WriteLine("Hmm, something went wrong- let's try again, or press 0 to quit."); //need to add functionality to quit
-            }
         }
         if (currentUser != null)
         {
@@ -68,97 +83,90 @@ class Program
             System.Console.WriteLine("[1] View existing Saved Trips");
             System.Console.WriteLine("[2] Plan a new Trip");
             int input = int.Parse(Console.ReadLine() ?? "0");
-        input = ValidateCmd(input, 2);
-        switch (input)
-        {
-            case 1:
-                ViewSavedTrips(); break;
-            case 2:
-                FilteringQuestions(); break;
+            input = ValidateCmd(input, 2);
+            switch (input)
+            {
+                case 1:
+                    ViewSavedTrips(); break;
+                case 2:
+                    FilteringQuestions(); break;
+            }
         }
-        }       
     }
     private static void ViewSavedTrips()
     {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
         List<SavedTrip> savedTrips = savedts.GetUserSavedTrips(currentUser);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
         System.Console.WriteLine("===========================================================================");
         System.Console.WriteLine("Here are the trips we have saved for you:");
         foreach (SavedTrip trip in savedTrips)
         {
             System.Console.WriteLine(trip);
+            
         }
+        System.Console.WriteLine("Goodbye!");
+            Environment.Exit(0);
     }
     private static void NewUser()
     {
-        System.Console.WriteLine("===========================================================================");
-        System.Console.WriteLine("Welcome! Let's create your User Profile. Please enter your first name: ");
-        string firstName = Console.ReadLine() ?? "";
-        //add validation for text only
-        System.Console.WriteLine("===========================================================================");
-        System.Console.WriteLine("Thanks! Now please enter your last name:");
-        string lastName = Console.ReadLine() ?? "";
-        //add validation for text only
-        System.Console.WriteLine("===========================================================================");
-        System.Console.WriteLine("Perfect! Please enter a Username:");
-        string username = Console.ReadLine() ?? "";
-
-        //add validation for unique username
-        System.Console.WriteLine("===========================================================================");
-        System.Console.WriteLine("Thank you! Let's create your Password:");
-        string password = Console.ReadLine() ?? "";
-
-        //add validation 
-
-        User? newUser = new(0, username, password, firstName, lastName);
-        newUser = us.RegisterUser(newUser);
-        System.Console.WriteLine();
-        if (newUser != null)
         {
-            currentUser = us.LoginUser(newUser.Username, newUser.Password);
             System.Console.WriteLine("===========================================================================");
-            System.Console.WriteLine("Your account is registered! Now we can plan your trip!");
+            System.Console.WriteLine("Welcome! Let's create your User Profile. Please enter your first name: ");
+            string firstName = Console.ReadLine() ?? "";
+            //add validation for text only
+            System.Console.WriteLine("===========================================================================");
+            System.Console.WriteLine("Thanks! Now please enter your last name:");
+            string lastName = Console.ReadLine() ?? "";
+            //add validation for text only
+            System.Console.WriteLine("===========================================================================");
+            System.Console.WriteLine("Perfect! Please enter a Username:");
+            string username = Console.ReadLine() ?? "";
+
+            //add validation for unique username
+            System.Console.WriteLine("===========================================================================");
+            System.Console.WriteLine("Thank you! Let's create your Password:");
+            string password = Console.ReadLine() ?? "";
+
+            //add validation 
+
+            User? newUser = new(0, username, password, firstName, lastName);
+            newUser = us.RegisterUser(newUser);
+            System.Console.WriteLine();
+            if (newUser != null)
+            {
+                currentUser = us.LoginUser(newUser.Username, newUser.Password);
+                System.Console.WriteLine("===========================================================================");
+                System.Console.WriteLine("Your account is registered! Now we can plan your trip!");
+            }
+            FilteringQuestions();
         }
-        FilteringQuestions();
     }
     private static void FilteringQuestions()
     {
         System.Console.WriteLine("================= Let's get started with a few questions! =================");
         {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             User user = us.LoginUser(currentUser.Username, currentUser.Password);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             Season();
-        var maxBudget = Budget();
-        NumOfTravelers();
-        DepLocation();
-        var travelType = TravelType();
-        var needsPassport = PassportStatus();
-        var climate = ClimatePref();
-        System.Console.WriteLine("===========================================================================");
-        System.Console.WriteLine("Ok, the hard part is over! Here are the trips we have that fit your needs!");
-        var filteredTrips = tripService.FilterTrips(maxBudget, climate, needsPassport, travelType);
-        foreach (var trip in filteredTrips)
-        {
-#pragma warning disable CS8604 // Possible null reference argument.
-                savedts.SaveUserTrip(currentUser.UserId, trip.Id, trip.Location, trip.TravelType, trip.Climate, trip.NeedsPassport, trip.IncludedActivities);
-#pragma warning restore CS8604 // Possible null reference argument.
+            var maxBudget = Budget();
+            NumOfTravelers();
+            DepLocation();
+            var travelType = TravelType();
+            var needsPassport = PassportStatus();
+            var climate = ClimatePref();
+            System.Console.WriteLine("===========================================================================");
+            System.Console.WriteLine("Ok, the hard part is over! Here are the trips we have that fit your needs!");
+            var filteredTrips = tripService.FilterTrips(maxBudget, climate, needsPassport, travelType);
+            foreach (var trip in filteredTrips)
+            {
+                savedts.SaveUserTrip(currentUser.UserId, trip.Id, trip.Location, trip.MaxBudget, trip.TravelType, trip.Climate, trip.NeedsPassport, trip.IncludedActivities);
                 System.Console.WriteLine("=================================================================================================================================================================================================");
-            System.Console.WriteLine(trip);
-        }       
+                System.Console.WriteLine(trip);
+            }
+            System.Console.WriteLine("Goodbye!");
+            Environment.Exit(0);
         }
-        // ChildStatus();
     }
-    // public static bool ChildStatus()
-    // {
-    //     System.Console.WriteLine("Will you be traveling with any children? Other than your own inner child, of course!");
-    //     string cs = Console.ReadLine() ?? "".Trim();
-    //     bool childStatus = cs.Equals("yes", StringComparison.CurrentCultureIgnoreCase);
-    //     return childStatus;
-    //     //Add input validation
-
-    // }
     public static string ClimatePref()
     {
         System.Console.WriteLine("===========================================================================");
@@ -170,7 +178,7 @@ class Program
             {
                 if (climate == "warm" || climate == "cool" || climate == "any")
                 {
-                    valid = true;                   
+                    valid = true;
                     break;
                 }
                 else valid = false;
@@ -194,13 +202,13 @@ class Program
                 climate = Console.ReadLine() ?? "".Trim();
                 climate = climate.ToLower();
             }
-        }       
+        }
         return climate;
     }
     public static bool PassportStatus()
     {
         System.Console.WriteLine("===========================================================================");
-        System.Console.WriteLine("Do all travelers have a valid Passport, or will you at the time of travel?");                  
+        System.Console.WriteLine("Do all travelers have a valid Passport, or will you at the time of travel?");
         bool valid = false;
         string ps = "";
         bool passportStat = false;
@@ -243,20 +251,20 @@ class Program
         while (valid == false)
         {
             if (travelType == "air" || travelType == "train" || travelType == "cruise" || travelType == "any")
-                {
-                    valid = true;
-                    break;
-                }
-                else valid = false;
+            {
+                valid = true;
+                break;
+            }
+            else valid = false;
             System.Console.WriteLine("Please enter a type of travel, or you could say Any:");
             travelType = Console.ReadLine() ?? "".Trim();
             travelType = travelType.ToLower();
             if (travelType == "air" || travelType == "train" || travelType == "cruise" || travelType == "any")
-                {
-                    valid = true;
-                    break;
-                }
-                else valid = false;
+            {
+                valid = true;
+                break;
+            }
+            else valid = false;
             if (valid == false)
             {
                 System.Console.WriteLine("===========================================================================");
@@ -318,11 +326,11 @@ class Program
         }
         return travelers;
     }
-    public static double Budget()
+    public static int Budget()
     {
         System.Console.WriteLine("===========================================================================");
         System.Console.WriteLine("Now- what budget are you working with?");
-        double maxBudget = 1;
+        int maxBudget = 1;
         bool keepGoing = true;
         while (keepGoing == true)
         {
@@ -332,7 +340,7 @@ class Program
                 try
                 {
                     System.Console.WriteLine("Our trips start at 3000. Please enter a maximum budget, or press '0' to quit:");
-                    maxBudget = double.Parse(Console.ReadLine() ?? "0");
+                    maxBudget = int.Parse(Console.ReadLine() ?? "0");
                     if (maxBudget == 0)
                     {
                         System.Console.WriteLine("===========================================================================");
@@ -360,7 +368,7 @@ class Program
                 keepGoing = false;
             }
         }
-        return maxBudget;      
+        return maxBudget;
     }
     public static string Season()
     {
@@ -401,7 +409,7 @@ class Program
         }
         return season;
 
-    }   
+    }
     private static int ValidateCmd(int cmd, int maxOption)
     {
         while (cmd < 0 || cmd > maxOption)

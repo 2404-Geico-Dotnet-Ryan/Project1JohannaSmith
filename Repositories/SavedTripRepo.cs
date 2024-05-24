@@ -3,8 +3,6 @@ using System.Data.SqlClient;
 class SavedTripRepo
 {
     private readonly string _connectionString;
-    // SavedTripStorage savedTripStorage = new();
-    // TripStorage tripStorage = new();
     UserRepo ur;
     public SavedTripRepo(string connString)
     {
@@ -14,11 +12,12 @@ class SavedTripRepo
     {
         using SqlConnection connection = new(_connectionString);
         connection.Open();
-        string sql = "INSERT INTO SavedTrip (UserId, TripId, Location, TravelType, ClimatePref, PassportStatus, IncludedActivities) VALUES (@UserId, @TripId, @Location, @TravelType, @ClimatePref, @PassportStatus, @IncludedActivities)";
+        string sql = "INSERT INTO SavedTrip (UserId, TripId, Location, MaxBudget, TravelType, ClimatePref, PassportStatus, IncludedActivities) VALUES (@UserId, @TripId, @Location, @MaxBudget, @TravelType, @ClimatePref, @PassportStatus, @IncludedActivities)";
         using SqlCommand cmd = new(sql, connection);
         cmd.Parameters.AddWithValue("@UserId", savedTrip.UserId);
         cmd.Parameters.AddWithValue("@TripId", savedTrip.TripId);
         cmd.Parameters.AddWithValue("@Location", savedTrip.Location);
+        cmd.Parameters.AddWithValue("@MaxBudget", savedTrip.MaxBudget);
         cmd.Parameters.AddWithValue("@TravelType", savedTrip.TravelType);
         cmd.Parameters.AddWithValue("@ClimatePref", savedTrip.ClimatePref);
         cmd.Parameters.AddWithValue("@PassportStatus", savedTrip.PassportStatus);
@@ -41,12 +40,11 @@ class SavedTripRepo
             savedTrip.TripId = (int)reader["TripId"];
             savedTrip.UserId = (int)reader["UserId"];
             savedTrip.Location = (string)reader["Location"];
-            // savedTrip.Season = (string)reader["Season"];
+            savedTrip.MaxBudget = (int)reader["MaxBudget"];
             savedTrip.ClimatePref = (string)reader["ClimatePref"];
-            // savedTrip.NumOfTravelers = (int)reader["NumOfTravelers"];
             savedTrip.TravelType = (string)reader["TravelType"];
             savedTrip.PassportStatus = (bool)reader["PassportStatus"];
-            // savedTrip.MaxBudget = (int)reader["MaxBudget"];
+            savedTrip.IncludedActivities = (string)reader["IncludedActivities"];
             savedTrips.Add(savedTrip);
         }
         return savedTrips;

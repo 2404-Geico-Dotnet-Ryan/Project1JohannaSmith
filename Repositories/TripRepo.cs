@@ -3,10 +3,7 @@ using System.Data.SqlClient;
 class TripRepo
 {
     private readonly string _connectionString;
-#pragma warning disable IDE0044 // Add readonly modifier
     UserRepo ur;
-#pragma warning restore IDE0044 // Add readonly modifier
-
     public TripRepo(string connString)
     {
         _connectionString = connString;
@@ -35,7 +32,7 @@ class TripRepo
             return trips;
         }        
     }
-    public List<Trip> FilteredTrips(int id, string location, double maxBudget, string travelType, string climate, bool needsPassport, string includedActivities)
+    public List<Trip> FilteredTrips(int id, string location, int maxBudget, string travelType, string climate, bool needsPassport, string includedActivities)
     {
         List<Trip> filteredTrips = new List<Trip>();
         using SqlConnection connection = new(_connectionString);

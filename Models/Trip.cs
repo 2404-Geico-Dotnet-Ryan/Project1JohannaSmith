@@ -8,7 +8,7 @@ class Trip
 {
     public int Id { get; set; }
     public string? Location { get; set; }
-    public double MaxBudget { get; set; }
+    public int MaxBudget { get; set; }
     public string? TravelType { get; set; }
     public string? Climate { get; set; }
     public bool NeedsPassport { get; set; }
@@ -19,7 +19,7 @@ class Trip
 
     }
 
-    public Trip(int id,  string location, double maxBudget, string travelType, string climate, bool needsPassport, string includedActivities)
+    public Trip(int id,  string location, int maxBudget, string travelType, string climate, bool needsPassport, string includedActivities)
     {
         Id = id;
         Location = location;

@@ -8,7 +8,7 @@ class TripService
     {
         this.tripRepo = tripRepo;
     }
-    public List<Trip> FilterTrips(double maxBudget, string climate, bool needsPassport, string travelType)
+    public List<Trip> FilterTrips(int maxBudget, string climate, bool needsPassport, string travelType)
     {
         var trips = tripRepo.GetTrips().Where(t => t.MaxBudget <= maxBudget);
         if (climate.ToLower() != "any")
