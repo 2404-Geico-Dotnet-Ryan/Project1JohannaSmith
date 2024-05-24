@@ -31,7 +31,7 @@ class UserService
                 return user;
             }
         }
-        System.Console.WriteLine("Oops- invalid username/password combo, please try again, or press 0 to quit:");
+        System.Console.WriteLine("The username/password combo is invalid, try again or press 0 to exit:");
         return null; 
     }
 
