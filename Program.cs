@@ -102,11 +102,21 @@ class Program
         System.Console.WriteLine("Here are the trips we have saved for you:");
         foreach (SavedTrip trip in savedTrips)
         {
-            System.Console.WriteLine(trip);
             System.Console.WriteLine("===========================================================================");
+            System.Console.WriteLine(trip);            
         }
-        System.Console.WriteLine("Goodbye!");
-            Environment.Exit(0);
+        System.Console.WriteLine("===========================================================================");
+            System.Console.WriteLine("Would you like to plan another trip? Enter Yes to continue, or No to Exit:");
+            string proceed = Console.ReadLine() ?? "".ToLower();
+            if (proceed == "yes")
+            {
+                FilteringQuestions();
+            }
+            else if (proceed == "no")
+            {
+                System.Console.WriteLine("Goodbye!");
+                Environment.Exit(0);
+            }
     }
     private static void NewUser()
     {
@@ -164,8 +174,19 @@ class Program
                 System.Console.WriteLine("=================================================================================================================================================================================================");
                 System.Console.WriteLine(trip);
             }
-            System.Console.WriteLine("Goodbye!");
-            Environment.Exit(0);
+            System.Console.WriteLine("===========================================================================");
+            System.Console.WriteLine("Would you like to plan another trip? Enter Yes to continue, or No to Exit:");
+            string proceed = Console.ReadLine() ?? "".ToLower();
+            if (proceed == "yes")
+            {
+                FilteringQuestions();
+            }
+            else if (proceed == "no")
+            {
+                System.Console.WriteLine("Goodbye!");
+                Environment.Exit(0);
+            }
+            
         }
     }
     public static string ClimatePref()
