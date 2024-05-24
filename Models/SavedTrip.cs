@@ -33,7 +33,7 @@ class SavedTrip
 
     public override string ToString()
     {
-        return $"{{ Trip Id: {TripId}, Location: {Location}, Cost: {MaxBudget}, TravelType: {TravelType}, Climate: {ClimatePref}, NeedsPassport: {PassportStatus}, IncludedActivities: {IncludedActivities}}}";
+        return $"{{ Trip Id: {TripId}, Destination: {Location}, All-Inclusive Cost: {MaxBudget}, TravelType: {TravelType}, Climate: {ClimatePref}, Requires Passport: {PassportStatus}, Included Activities: {IncludedActivities}}}";
     }
 
 }

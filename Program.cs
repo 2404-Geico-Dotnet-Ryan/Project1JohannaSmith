@@ -103,7 +103,7 @@ class Program
         foreach (SavedTrip trip in savedTrips)
         {
             System.Console.WriteLine(trip);
-            
+            System.Console.WriteLine("===========================================================================");
         }
         System.Console.WriteLine("Goodbye!");
             Environment.Exit(0);
@@ -144,7 +144,8 @@ class Program
     }
     private static void FilteringQuestions()
     {
-        System.Console.WriteLine("================= Let's get started with a few questions! =================");
+        System.Console.WriteLine("===========================================================================");
+        System.Console.WriteLine("Let's get started with a few questions!");
         {
             User user = us.LoginUser(currentUser.Username, currentUser.Password);
             Season();
