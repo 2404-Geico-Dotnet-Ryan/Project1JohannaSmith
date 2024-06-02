@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj": {}
+    "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj": {}
   },
   "projects": {
-    "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj": {
+    "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj",
+        "projectUniqueName": "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj",
         "projectName": "Project1JohannaSmith",
-        "projectPath": "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj",
+        "projectPath": "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\Project1JohannaSmith.csproj",
         "packagesPath": "C:\\Users\\U88AFG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\obj\\",
+        "outputPath": "c:\\Users\\U88AFG\\Revature\\Project1JohannaSmith\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\U88AFG\\AppData\\Roaming\\NuGet\\NuGet.Config",
