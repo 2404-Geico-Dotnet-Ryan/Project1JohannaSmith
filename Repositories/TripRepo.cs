@@ -32,35 +32,6 @@ class TripRepo
             return trips;
         }        
     }
-    public List<Trip> FilteredTrips(int id, string location, int maxBudget, string travelType, string climate, bool needsPassport, string includedActivities)
-    {
-        List<Trip> filteredTrips = new List<Trip>();
-        using SqlConnection connection = new(_connectionString);
-        connection.Open();
-        string sql = "SELECT * FROM Trip WHERE MaxBudget <= @MaxBudget AND Climate = @ClimatePref AND needsPassport = @PassportStatus AND TravelType = @TravelType";
-        using SqlCommand cmd = new(sql, connection);
-        cmd.Parameters.AddWithValue("@Id", id);
-        cmd.Parameters.AddWithValue("@Location", location);
-        cmd.Parameters.AddWithValue("@MaxBudget", maxBudget);
-        cmd.Parameters.AddWithValue("@TravelType", travelType);
-        cmd.Parameters.AddWithValue("@Climate", climate);
-        cmd.Parameters.AddWithValue("@NeedsPassport", needsPassport);
-        cmd.Parameters.AddWithValue("@IncludedActivities", includedActivities);
-        using var reader = cmd.ExecuteReader();
-        while (reader.Read())
-        {
-            Trip trip = new();
-            trip.Id = (int)reader["Id"];
-            trip.Location = (string)reader["Location"];
-            trip.Climate = (string)reader["Climate"];
-            trip.TravelType = (string)reader["TravelType"];
-            trip.NeedsPassport = (bool)reader["NeedsPassport"];
-            trip.MaxBudget = (int)reader["MaxBudget"];
-            trip.IncludedActivities = (string)reader["IncludedActivities"];
-            filteredTrips.Add(trip);
-        }
-        return filteredTrips;
-    }
     public Trip? AddTrip(Trip t)
     {
         using SqlConnection connection = new(_connectionString);
@@ -83,26 +54,5 @@ class TripRepo
         {
             return null;
         }
-    }
-    public Trip? TripFilter()
-    {
-        using SqlConnection connection = new(_connectionString);
-        connection.Open();
-        string sql = "";
-        using SqlCommand cmd = new(sql, connection);
-        using var reader = cmd.ExecuteReader();
-        if (reader.Read())
-        {
-            Trip trip = new();
-            trip.Id = (int)reader["Id"];
-            trip.Location = (string)reader["Location"];
-            trip.Climate = (string)reader["Climate"];
-            trip.TravelType = (string)reader["TravelType"];
-            trip.NeedsPassport = (bool)reader["NeedsPassport"];
-            trip.MaxBudget = (int)reader["MaxBudget"];
-            trip.IncludedActivities = (string)reader["IncludedActivities"];
-            return trip;
-        }
-        return null;
     }
 }

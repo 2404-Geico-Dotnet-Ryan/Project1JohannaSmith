@@ -3,9 +3,7 @@ namespace ProjectOne;
 class SavedTripService
 {
    SavedTripRepo savedTrRepo;
-#pragma warning disable IDE0044 // Add readonly modifier
     TripRepo tripRepo;
-#pragma warning restore IDE0044 // Add readonly modifier
     UserRepo ur;
    UserService us;
    public SavedTripService(SavedTripRepo savedTrRepo)
