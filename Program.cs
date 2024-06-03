@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Linq.Expressions;
 namespace ProjectOne;
-
 class Program
 {
     static SavedTripService? savedts;
@@ -20,7 +19,7 @@ class Program
         tripService = new TripService(tripRepo);
         savedTrRepo = new SavedTripRepo(connectionString);
         savedts = new SavedTripService(savedTrRepo);
-        Console.Clear();
+        // Console.Clear();
         System.Console.WriteLine("===========================================================================");
         System.Console.WriteLine("Thank you for choosing Project One Travel Company!");
         System.Console.WriteLine("We look forward to working with you to plan your dream getaway!");
@@ -124,22 +123,15 @@ class Program
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Welcome! Let's create your User Profile. Please enter your first name: ");
             string firstName = Console.ReadLine() ?? "";
-            //add validation for text only
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Thanks! Now please enter your last name:");
             string lastName = Console.ReadLine() ?? "";
-            //add validation for text only
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Perfect! Please enter a Username:");
             string username = Console.ReadLine() ?? "";
-
-            //add validation for unique username
             System.Console.WriteLine("===========================================================================");
             System.Console.WriteLine("Thank you! Let's create your Password:");
             string password = Console.ReadLine() ?? "";
-
-            //add validation 
-
             User? newUser = new(0, username, password, firstName, lastName);
             newUser = us.RegisterUser(newUser);
             System.Console.WriteLine();
@@ -430,7 +422,6 @@ class Program
             }
         }
         return season;
-
     }
     private static int ValidateCmd(int cmd, int maxOption)
     {
@@ -442,4 +433,3 @@ class Program
         return cmd;
     }
 }
-
