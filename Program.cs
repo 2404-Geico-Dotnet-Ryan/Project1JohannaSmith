@@ -360,6 +360,7 @@ class Program
                         System.Console.WriteLine("===========================================================================");
                         System.Console.WriteLine("Thank you, have a nice day!");
                         System.Console.WriteLine("===========================================================================");
+                        Environment.Exit(0);
                         keepGoing = false;
                         break;
                     }
